@@ -1,2 +1,2 @@
 # npm-pack-zip-action
-Create a .zip archive of your npm package. Similar to npm pack, except it will generate a .zip archive instead of a tarball. This is useful for making npm package archives for use in AWS Lambda or Azure Web Apps.
+Create a `.zip` archive of your npm package. Similar to [npm pack](https://docs.npmjs.com/cli/pack.html), except it will generate a `.zip` archive instead of a tarball. This is useful for making npm package archives for use in AWS Lambda or Azure Web Apps. This project makes use of [`npm-packlist`](https://www.npmjs.com/package/npm-packlist) and [`bestzip`](https://www.npmjs.com/package/bestzip).
