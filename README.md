@@ -1,5 +1,5 @@
 # npm-pack-zip-action
-Create a `.zip` archive of your npm package. Similar to [npm pack](https://docs.npmjs.com/cli/pack.html), except it will generate a `.zip` archive instead of a tarball. This is useful for making npm package archives for use in AWS Lambda or Azure Web Apps. This project makes use of [`npm-packlist`](https://www.npmjs.com/package/npm-packlist) and [`bestzip`](https://www.npmjs.com/package/bestzip).
+Create a `.zip` archive of your npm package. Similar to [npm pack](https://docs.npmjs.com/cli/pack.html), except it will generate a `.zip` archive instead of a tarball. This is useful for making npm package archives for use in AWS Lambda or Azure Web Apps. This project makes use of [`npm-packlist`](https://www.npmjs.com/package/npm-packlist) and [`archiver`](https://www.npmjs.com/package/archiver).
 
 ## Inputs
 
@@ -14,3 +14,17 @@ Create a `.zip` archive of your npm package. Similar to [npm pack](https://docs.
 
 - `zip-path`: The relative path and file name of the `.zip` archive
 - `zip-path-full`: The full path and file name of the `.zip` archive
+
+## Example Usage
+
+```yml
+# Create the npm zip artifact
+- name: Save a zip of the build project
+  id: zip
+  uses: ataylorme/npm-pack-zip-action@1.0.0
+# Upload the npm zip artifact
+- uses: actions/upload-artifact@v1
+  with:
+    name: npm-pack-zip
+    path: ${{ steps.zip.outputs.zip-path }}
+```
