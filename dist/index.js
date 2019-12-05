@@ -40214,7 +40214,7 @@ function zipFiles(filesToZip, zipFileName) {
 }
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
-        const filesToZip = yield npm_packlist_1.default({ path: process.cwd() });
+        const filesToZip = yield npm_packlist_1.default({ path: sourceDir });
         const zipFileName = yield getZipFileName();
         try {
             yield zipFiles(filesToZip, zipFileName);
@@ -40224,6 +40224,7 @@ function run() {
         }
         core.info(`Successfully created the .zip file ${zipFileName}.`);
         core.setOutput('zip-path', zipFileName);
+        core.setOutput('zip-path-full', path.resolve(sourceDir, zipFileName));
         process.exit(0);
     });
 }

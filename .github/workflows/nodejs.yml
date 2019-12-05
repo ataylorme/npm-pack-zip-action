@@ -59,7 +59,7 @@ jobs:
           name: npm-pack-zip
           path: ${{ steps.zip.outputs.zip-path }}
       - name: Create Release
-        if: github.event_name == 'create' && github.ref_type == 'tag'
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
         id: create_release
         uses: actions/create-release@v1.0.0
         env:
@@ -70,7 +70,7 @@ jobs:
           draft: false
           prerelease: false
       - name: Upload Release Asset
-        if: github.event_name == 'create' && github.ref_type == 'tag'
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
         id: upload-release-asset 
         uses: actions/upload-release-asset@v1.0.1
         env:

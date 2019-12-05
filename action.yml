@@ -11,7 +11,9 @@ inputs:
     default: ""
 outputs:
   zip-path:
-    description: "Full path of the created .zip file"
+    description: "The relative path and file name of the `.zip` archive"
+  zip-path-full:
+    description: "The full path and file name of the `.zip` archive"
 runs:
   using: "node12"
   main: "dist/index.js"

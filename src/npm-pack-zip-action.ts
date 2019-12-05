@@ -78,7 +78,7 @@ async function zipFiles(filesToZip: Array<string>, zipFileName: string): Promise
 }
 
 async function run(): Promise<void> {
-  const filesToZip = await packlist({ path: process.cwd() });
+  const filesToZip = await packlist({ path: sourceDir });
   const zipFileName = await getZipFileName();
   try {
     await zipFiles(filesToZip, zipFileName);
@@ -87,6 +87,7 @@ async function run(): Promise<void> {
   }
   core.info(`Successfully created the .zip file ${zipFileName}.`);
   core.setOutput('zip-path', zipFileName);
+  core.setOutput('zip-path-full', path.resolve(sourceDir, zipFileName));
   process.exit(0);
 }
 

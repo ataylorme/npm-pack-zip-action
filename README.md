@@ -12,4 +12,5 @@ Create a `.zip` archive of your npm package. Similar to [npm pack](https://docs.
 
 ## Outputs
 
-- `zip-path`: The full path to the `.zip` archive
+- `zip-path`: The relative path and file name of the `.zip` archive
+- `zip-path-full`: The full path and file name of the `.zip` archive
