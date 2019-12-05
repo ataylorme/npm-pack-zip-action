@@ -1,0 +1,20 @@
+name: "npm pack zip action"
+description: "A GitHub action that creates a .zip file with the same contents as the tarball created with npm pack."
+inputs:
+  file-name:
+    description: "Name of the .zip file to create. PACKAGE_NAME will be replaced with the package name from package.json and SHA will be replaced with the commit hash that triggered the action"
+    required: false
+    default: "PACKAGE_NAME-SHA.zip"
+  source-dir:
+    description: "The directory, relative to the root, where the package.json to zip is"
+    required: false
+    default: ""
+outputs:
+  zip-path:
+    description: "Full path of the created .zip file"
+runs:
+  using: "node12"
+  main: "dist/index.js"
+branding:
+  icon: "check-circle"
+  color: "yellow"
